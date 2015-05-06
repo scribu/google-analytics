@@ -389,7 +389,7 @@ class Query(object):
             except Exception as err:
                 if isinstance(err, TypeError):
                     parameters = utils.paste(self.raw, '\t', '\n', pad=True)
-                    message = err.message
+                    message = str(err)
                     diagnostics = utils.format(
                         """
                         {message}
