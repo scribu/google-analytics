@@ -510,7 +510,7 @@ class CoreQuery(Query):
         query.range('2014-01-01', '2014-01-31', precision='DEFAULT')
         # queries that are more precise
         query.range('2014-01-01', '2014-01-31', precision=2)
-        query.range('2014-01-01', '2014-01-31', precision='HIGH_PRECISION')        
+        query.range('2014-01-01', '2014-01-31', precision='HIGHER_PRECISION')        
         ```
 
         **Note:** it is currently not possible to easily specify that you'd like 
