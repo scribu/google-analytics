@@ -1,5 +1,6 @@
 # encoding: utf-8
 
+import logging
 import click
 import inspector
 
@@ -8,7 +9,14 @@ import googleanalytics as ga
 
 @click.group()
 def cli():
-    pass
+    logger = logging.getLogger('googleanalytics')
+
+    handler = logging.StreamHandler()
+    formatter = logging.Formatter(
+                    '%(asctime)s %(name)-12s %(levelname)-8s %(message)s')
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+    logger.setLevel(logging.INFO)
 
 def authenticated(fn):
     @inspector.wraps(fn)

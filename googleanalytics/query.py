@@ -3,6 +3,7 @@
 """
 """
 
+import logging
 from copy import deepcopy
 import hashlib
 import json
@@ -16,6 +17,8 @@ import inspector
 from .columns import Column, Segment
 from . import utils
 from . import errors
+
+logger = logging.getLogger('googleanalytics')
 
 
 class Report(object):
@@ -733,6 +736,8 @@ class CoreQuery(Query):
 
         while not (is_enough or is_complete):
             chunk = cursor.execute()
+
+            logger.info('Fetched chunk starting from index %d.' % cursor.raw.get('start_index', 1))
 
             if report:
                 report.append(chunk.raw[0], cursor)
