@@ -545,7 +545,7 @@ class CoreQuery(Query):
                 if granularity in self.GRANULARITY_LEVELS:
                     granularity = self.GRANULARITY_LEVELS.index(granularity)
                 else:
-                    levels = ", ".join(options.keys())
+                    levels = ", ".join(self.GRANULARITY_LEVELS)
                     raise ValueError("Granularity should be one of: " + levels)
 
             dimension = self.GRANULARITY_DIMENSIONS[granularity]
