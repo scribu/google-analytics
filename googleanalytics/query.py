@@ -535,7 +535,7 @@ class CoreQuery(Query):
 
         if precision not in self.PRECISION_LEVELS:
             levels = ", ".join(self.PRECISION_LEVELS)
-            raise ValueError("Granularity should be one of: " + levels)
+            raise ValueError("Precision should be one of: " + levels)
 
         if precision != 'DEFAULT':
             self.raw.update({'samplingLevel': precision})
