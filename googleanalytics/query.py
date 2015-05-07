@@ -167,12 +167,12 @@ class Query(object):
         self._report = None
         self._specify(metrics=metrics, dimensions=dimensions)
 
-    # no not execute more than one query per second
+    # no not execute more than 5 queries per second
     def _wait(self):
         now = time.time()
         elapsed = now - self._lock
         wait = max(0, 1 - elapsed)
-        time.sleep(wait)
+        time.sleep(wait/5)
         self._lock = time.time()
         return wait
 
